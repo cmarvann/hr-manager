@@ -11,7 +11,7 @@ return inquirer.prompt([
             if (nameInput) {
                 return true;
             } else {
-                console.log('Enter employee name!');
+               
                 return false;
             }
         }
@@ -24,7 +24,7 @@ return inquirer.prompt([
             if (roleInput) {
                 return true;
             } else {
-                console.log('Enter employee role!');
+               
                 return false;
             }
         }
@@ -38,7 +38,7 @@ return inquirer.prompt([
             if (managerInput) {
                 return true;
             } else {
-                console.log('Enter employee manager!');
+                
                 return false;
             }
         }
@@ -52,7 +52,7 @@ return inquirer.prompt([
             if (updateInput) {
                 return true;
             } else {
-                console.log('Enter what you would like to do!');
+                
                 return false;
             }
         }
@@ -66,7 +66,7 @@ return inquirer.prompt([
             if (descriptionInput) {
                 return true;
             } else {
-                console.log('Enter employee name you want ot update!');
+        
                 return false;
             }
         }
@@ -79,7 +79,7 @@ return inquirer.prompt([
         if ( assignInput) {
             return true;
         } else {
-            console.log('Enter the assigned role!');
+          
             return false;
         }
     }
@@ -99,7 +99,6 @@ return inquirer.prompt([
 ]);
 };
 
-promptUser().then(answers => console.log(answers));
 
 const promptProject = hrmData  => {
   if (!hrmData.projects) {
@@ -119,7 +118,7 @@ Add a New Project
             if (to_doInput) {
                 return true;
             } else {
-                console.log('Enter what you would liek to do!');
+               
                 return false;
             }
         }
@@ -133,7 +132,7 @@ Add a New Project
         if (to_doInput) {
           return true;
         } else {
-          console.log('Enter what you would like to do!');
+     
           return false;
         }
       }

@@ -7,4 +7,5 @@ VALUES
   ('Ida', 'Falls', 0), 
   ('Harry', 'Camp', 0),
   ('Joe', 'Brown', 1),
-  ('Jane', 'Doe', 1);
+  ('Jane', 'Doe', 1),
+  ('Sam', 'Smith', 0);

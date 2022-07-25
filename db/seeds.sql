@@ -1,11 +1,24 @@
-INSERT INTO workers (first_name, last_name, department_role)
-VALUES
-  ('John', 'Hand', 1),
-  ('Tim', 'Right', 0),
-  ('Shelly', 'Blonde', 1),
-  ('Joy', 'Happy', 1),
-  ('Ida', 'Falls', 0), 
-  ('Harry', 'Camp', 0),
-  ('Joe', 'Brown', 1),
-  ('Jane', 'Doe', 1),
-  ('Sam', 'Smith', 0);
+INSERT INTO departments (name)
+VALUES 
+('Engineering'),
+ ('Finance'),
+ ('Legal'),
+('Sales'),
+('Service'),
+('Customer Service');
+
+
+
+
+-- INSERT INTO employee ( first_name, last_name, role_id, manager_id)
+-- VALUES
+--   ('John', 'Doe', 1, 'null'),
+--   ('Mike', 'Chan', 1, 'John' 'Doe'),
+--   ('Sam' 'Kash', 1 'Ashley' 'Rodriquez')
+--   ('Ashley', 'Rodriquez', 2, 'null'),
+--   ('Kevin', 'Tupik', 2, 'Ashley' 'Rodriquez'),
+--   ('Kunal', 'Singh', 3, 'null'), 
+--   ('Malia', 'Brown', 3, 'Kunal' 'Singh'),
+--   ('Sarah', 'Lourd', 4, 'null'),
+--   ('Tom', 'Allen', 4, 'Sarah' 'Lourd');
+  

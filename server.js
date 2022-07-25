@@ -23,8 +23,8 @@ const db = mysql.createConnection(
  
 
 // Get all workers
-app.get('/api/workers', (req, res) => {
-  const sql = `SELECT * FROM workers`;
+app.get('/api/departments', (req, res) => {
+  const sql = `SELECT * FROM departments`;
 
   db.query(sql, (err, rows) => {
     if (err) {
@@ -37,8 +37,34 @@ app.get('/api/workers', (req, res) => {
     });
   });
 });
+app.get('/api/role', (req, res) => {
+  const sql = `SELECT * FROM role`;
 
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
+app.get('/employee', (req, res) => {
+  const sql = `SELECT * FROM role`;
 
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
 
 // // Get a single worker
 // app.get('/api/workers/:id', (req, res) => {

@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS employees;
-CREATE DATABASE employees;
+DROP DATABASE IF EXISTS hrmanager;
+CREATE DATABASE hrmanager;
 
-USE employees;
+USE hrmanager;

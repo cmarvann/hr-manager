@@ -10,18 +10,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
-// Connect to database
-const db = mysql.createConnection(
-  {
-    host: 'localhost',
-    // Your MySQL username,
-    user: 'root',
-    // Your MySQL password
-    password: 'campbc',
-    database: 'hrmanager'
-  },
-  console.log('Connected to hrmanager database.')
-);
+// // Connect to database
+// const db = mysql.createConnection(
+//   {
+//     host: 'localhost',
+//     // Your MySQL username,
+//     user: 'root',
+//     // Your MySQL password
+//     password: 'campbc',
+//     database: 'hrmanager'
+//   },
+//   console.log('Connected to hrmanager database.')
+// );
  
 // // Get all departments
 // app.get('/api/departments', (req, res) => {

@@ -23,9 +23,25 @@ const db = mysql.createConnection(
   console.log('Connected to hrmanager database.')
 );
  
-// Get all departments
-app.get('/api/departments', (req, res) => {
-  const sql = `SELECT * FROM departments`;
+// // Get all departments
+// app.get('/api/departments', (req, res) => {
+//   const sql = `SELECT * FROM departments`;
+
+//   db.query(sql, (err, rows) => {
+//     if (err) {
+//       res.status(500).json({ error: err.message });
+//       return;
+//     }
+//     res.json({
+//       message: 'success',
+//       data: rows
+//     });
+//   });
+// });
+
+// Get all roles
+app.get('/api/roles', (req, res) => {
+  const sql = `SELECT * FROM roles`;
 
   db.query(sql, (err, rows) => {
     if (err) {
@@ -39,8 +55,9 @@ app.get('/api/departments', (req, res) => {
   });
 });
 
-// app.get('/api/role', (req, res) => {
-//   const sql = `SELECT * FROM role`;
+// // Get all employees
+// app.get('/api/employees', (req, res) => {
+//   const sql = `SELECT * FROM employees`;
 
 //   db.query(sql, (err, rows) => {
 //     if (err) {
@@ -54,103 +71,47 @@ app.get('/api/departments', (req, res) => {
 //   });
 // });
 
-// app.get('/employee', (req, res) => {
-//   const sql = `SELECT * FROM role`;
-
-//   db.query(sql, (err, rows) => {
-//     if (err) {
-//       res.status(500).json({ error: err.message });
-//       return;
-//     }
-//     res.json({
-//       message: 'success',
-//       data: rows
-//     });
-//   });
-// });
-
-// Get a single department
-app.get('/api/departments/:id', (req, res) => {
-  const sql = `SELECT * FROM departments WHERE id = ?`;
-  const params = [req.params.id];
-
-  db.query(sql, params, (err, row) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: row
-    });
-  });
-});
 
 
-// // test employees db
-// db.query(`SELECT * FROM workers`, (err, rows) => {
+
+// // test hrmanager db
+// db.query(`SELECT * FROM employees`, (err, rows) => {
 //   console.log(rows);
 // });
 
-// // GET a single worker
-// db.query(`SELECT * FROM workers WHERE id = 2`, (err, row) => {
+// // GET a single employee
+// db.query(`SELECT * FROM employees WHERE id = 2`, (err, row) => {
 //   if (err) {
 //     console.log(err);
 //   }
 //   console.log(row);
 // });
 
-// Delete a department
-app.delete('/api/departments/:id', (req, res) => {
-  const sql = `DELETE FROM departments WHERE id = ?`;
-  const params = [req.params.id];
+// // Add an employee
+// const sql = `INSERT INTO employees (first_name, last_name, manager_id) 
+//               VALUES (?,?,?)`;
+// const params = ['Sam', 'Smith', 1];
 
-  db.query(sql, params, (err, result) => {
-    if (err) {
-      res.statusMessage(400).json({ error: res.message });
-    } else if (!result.affectedRows) {
-      res.json({
-        message: 'Department not found'
-      });
-    } else {
-      res.json({
-        message: 'deleted',
-        changes: result.affectedRows,
-        id: req.params.id
-      });
-    }
-  });
-});
+// db.query(sql, params, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
 
-// Create a deparment
-app.post('/api/departments', ({ body }, res) => {
-  const errors = inputCheck(Id, 'name');
-  if (errors) {
-    const sql = `INSERT INTO s (name)
-  VALUES (?)`;
-const params = [body.name];
-
-db.query(sql, params, (err, result) => {
-  if (err) {
-    res.status(400).json({ error: err.message });
-    return;
-  }
-  res.json({
-    message: 'success',
-    data: body
-  });
-});
-
-    res.status(400).json({ error: errors });
-    return;
-  }
-});
+// // Delete a role
+// db.query(`DELETE FROM roles WHERE id = ?`, 3, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
 
 
-// // Create a worker
-// const sql = `INSERT INTO workers (id, first_name, last_name, department_role) 
-//               VALUES (?,?,?,?)`;
-// const params = [9, 'Sam', 'Smith', 1];
+// // Add a role
+// const sql = `INSERT INTO roles (title, salary) 
+//               VALUES (?,?)`;
+// const params = ['Customer Service', '80000', 1];
 
 // db.query(sql, params, (err, result) => {
 //   if (err) {
@@ -164,8 +125,6 @@ db.query(sql, params, (err, result) => {
 //   console.log(rows);
 // });
 
-
-
 // Default response for any other request (Not Found)
 app.use((req, res) => {
     res.status(404).end();
@@ -175,4 +134,12 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     });
-    
+
+// // Start server after DB connection
+// db.connect(err => {
+//   if (err) throw err;
+//   console.log('Database connected.');
+//   app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`);
+//   });
+// });    

@@ -10,34 +10,34 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
-// // Connect to database
-// const db = mysql.createConnection(
-//   {
-//     host: 'localhost',
-//     // Your MySQL username,
-//     user: 'root',
-//     // Your MySQL password
-//     password: 'campbc',
-//     database: 'hrmanager'
-//   },
-//   console.log('Connected to hrmanager database.')
-// );
+// Connect to database
+const db = mysql.createConnection(
+  {
+    host: 'localhost',
+    // Your MySQL username,
+    user: 'root',
+    // Your MySQL password
+    password: 'campbc',
+    database: 'hrmanager'
+  },
+  console.log('Connected to hrmanager database.')
+);
  
 // // Get all departments
-// app.get('/api/departments', (req, res) => {
-//   const sql = `SELECT * FROM departments`;
+app.get('/api/departments', (req, res) => {
+  const sql = `SELECT * FROM departments`;
 
-//   db.query(sql, (err, rows) => {
-//     if (err) {
-//       res.status(500).json({ error: err.message });
-//       return;
-//     }
-//     res.json({
-//       message: 'success',
-//       data: rows
-//     });
-//   });
-// });
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
 
 // Get all roles
 app.get('/api/roles', (req, res) => {
@@ -55,29 +55,22 @@ app.get('/api/roles', (req, res) => {
   });
 });
 
-// // Get all employees
-// app.get('/api/employees', (req, res) => {
-//   const sql = `SELECT * FROM employees`;
+// Get all employees
+app.get('/api/employees', (req, res) => {
+  const sql = `SELECT * FROM employees`;
 
-//   db.query(sql, (err, rows) => {
-//     if (err) {
-//       res.status(500).json({ error: err.message });
-//       return;
-//     }
-//     res.json({
-//       message: 'success',
-//       data: rows
-//     });
-//   });
-// });
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
 
-
-
-
-// // test hrmanager db
-// db.query(`SELECT * FROM employees`, (err, rows) => {
-//   console.log(rows);
-// });
 
 // // GET a single employee
 // db.query(`SELECT * FROM employees WHERE id = 2`, (err, row) => {
@@ -134,6 +127,8 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     });
+
+
 
 // // Start server after DB connection
 // db.connect(err => {

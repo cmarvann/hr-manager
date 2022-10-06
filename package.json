@@ -1,19 +1,17 @@
 {
-  "dependencies": {
-    "express": "^4.18.1",
-    "inquirer": "^8.2.4",
-    "mysql2": "^2.3.3"
-  },
-  "scripts": {
-    "test": "jest",
-    "start": "node server.js"
-  },
   "name": "hr-manager",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
+ 
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+ 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cmarvann/hr-manager.git"
@@ -25,8 +23,14 @@
     "url": "https://github.com/cmarvann/hr-manager/issues"
   },
   "homepage": "https://github.com/cmarvann/hr-manager#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3"
+  },
+  
   "devDependencies": {
     "jest": "^28.1.3"
-  },
-  "description": ""
+  }
+
 }

@@ -3,8 +3,7 @@ const inquirer = require('inquirer');
 
   
 // array
-const promptUser = () => {
-    return inquirer.prompt([
+const questions = [
 
       {
 
@@ -70,23 +69,7 @@ const promptUser = () => {
         type: 'input',
         name: 'update',
         message: 'Would you like to save this update ? ',
-    }
-  ])
-};
-
-
-promptUser().then(answers => console.log(answers));
-
-const promptUpdate = hrmData  => {
-  if (!hrmData.updates) {
-  hrmData.updatess = [];
-  }
-  console.log(`
-=================
-Add a New Update
-=================
-`);
-  return inquirer.prompt([
+    },
     {
         type: 'input',
         name: 'efg',
@@ -224,23 +207,10 @@ Add a New Update
         message: 'Would you like to do another update? ',
     }
     
-  ]
-    )
 
-then(updateData => {
-    hrmData.projecs.push(projectData);
-    if (updateData.confirmAddUpdate) {
-      return promptUpdate(hrmData);
-    } else {
-      return hrmData;
-    }
-  });
-};
+]
 
 
-promptUser()
-  .then(promptUpdate)
-  .then(updateAnswers => console.log(updateAnswers));
 
 
 

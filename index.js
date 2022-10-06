@@ -3,12 +3,13 @@ const inquirer = require('inquirer');
 
   
 // array
-const questions = [
+const promptUser = () => {
+    return inquirer.prompt([
 
       {
 
       type: "list",
-      name: "todo",
+      name: "choice",
       message: "What would you like to do?",
       choices:
        [ 
@@ -20,21 +21,13 @@ const questions = [
         "View All Roles",
         "Add Role",
         "All Employee",
-        "Update Employee Role"
-    
-    ]
-    },
-    {
-
-     type: "list",
-      name: "deptartments",
-      message: "What would you like to do?",
-      choices:
-       [ 
+        "Update Employee Role",
         "Engineer",
         "Finanace",
         "Legal", 
         "Sales",
+        "Service",
+        "Customer Service"
     ]
     },
     {
@@ -42,16 +35,12 @@ const questions = [
         name: 'abc',
         message: 'Would you like to do ? ',
     },
-    {
-        type: 'input',
-        name: 'table1',
-        message: 'Insert department table here? ',
-    },
-    {
-        type: 'input',
-        name: 'cde',
-        message: 'Would you like to do ? ',
-    },
+    
+    // {
+    //     type: 'input',
+    //     name: 'cde',
+    //     message: 'Would you like to do ? ',
+    // },
     {
       type: 'input',
       name: 'department',
@@ -69,17 +58,42 @@ const questions = [
         type: 'input',
         name: 'update',
         message: 'Would you like to save this update ? ',
+    }
+  ])
+};
+
+
+promptUser().then(answers => console.log(answers));
+
+const promptUpdate = hrmData  => {
+  if (!hrmData.updates) {
+  hrmData.updatess = [];
+  }
+  console.log(`
+=================
+Add a New Update
+=================
+`);
+  return inquirer.prompt([
+   {
+    type: "list",
+      name: "choice",
+      message: "What would you like to do?",
+      choices:
+       [ 
+        "Update Employee Role",
+        "View All Roles",
+        "Add Role",
+        "Update Employee Role",
+        "Customer Service"
+    ]
     },
-    {
-        type: 'input',
-        name: 'efg',
-        message: 'Would you like to do ? ',
-    },
-    {
-        type: 'input',
-        name: 'table1',
-        message: 'Insert Roles table here? ',
-    },
+    // {
+    //     type: 'input',
+    //     name: 'efg',
+    //     message: 'Would you like to do ? ',
+    // },
+    
 
     {
         type: 'input',
@@ -104,25 +118,31 @@ const questions = [
         type: 'input',
         name: 'belong',
         message: 'Which department does this role belong to? ',
-        validate: belongInput => {
-            if (belongInput) {
-                return true;
-            } else {
-                console.log('Service!');
-                return false;
-            }
-        }
     },
     {
         type: 'input',
         name: 'update1',
         message: 'Would you like to save this update ? ',
     },
+
     {
-        type: 'input',
-        name: 'ghi',
-        message: 'Would you like to do ? ',
-    },
+
+        type: "list",
+        name: "choice3",
+        message: "What would you like to do?",
+        choices:
+         [ 
+          "Add Employee", 
+          "Add Role", 
+          "Update Employee Role",
+         
+      ]
+      },
+    // {
+    //     type: 'input',
+    //     name: 'ghi',
+    //     message: 'Would you like to do ? ',
+    // },
     {
         type: 'input',
         name: 'firstname',
@@ -137,14 +157,6 @@ const questions = [
         type: 'input',
         name: 'newrole',
         message: 'What is the employee role?  ',
-        validate: newroleInput => {
-            if (newroleInput) {
-                return true;
-            } else {
-                console.log('Customer Service!');
-                return false;
-            }
-        }
     },
     {
         type: 'input',
@@ -164,10 +176,21 @@ const questions = [
         name: 'update2',
         message: 'Would you like to save this update ? ',
     },
+    
     {
-        type: 'input',
-        name: 'ijk',
-        message: 'Would you like to do ? ',
+
+            type: "list",
+            name: "change",
+            message: "What would you like to do?",
+            choices:
+             [ 
+              
+              "Update Employee Role",
+              "View All Roles",
+              "Add Role",
+              
+              
+          ]
     },
 
     {
@@ -207,10 +230,23 @@ const questions = [
         message: 'Would you like to do another update? ',
     }
     
+  ]
+    )
 
-]
+then(updateData => {
+    hrmData.projecs.push(projectData);
+    if (updateData.confirmAddUpdate) {
+      return promptUpdate(hrmData);
+    } else {
+      return hrmData;
+    }
+  });
+};
 
 
+promptUser()
+  .then(promptUpdate)
+  .then(updateAnswers => console.log(updateAnswers));
 
 
 
